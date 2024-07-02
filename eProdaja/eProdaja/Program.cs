@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IKorisnikService, KorisnikService>();
+builder.Services.AddScoped<IJedinicaMjereServices, JedinicaMjereServices>();
+builder.Services.AddScoped<IVrsteProizvodaService, VrsteProizvodaService>();
 builder.Services.AddDbContext<EProdajaContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
