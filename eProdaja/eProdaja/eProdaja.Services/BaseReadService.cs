@@ -3,10 +3,10 @@ using eProdaja.Database;
 
 namespace eProdaja.eProdaja.Services;
 
-public class BaseReadService<T, TDb> : IReadService<T> where T : class where TDb : class
+public class BaseReadService<T, TDb, TSearch> : IReadService<T, TSearch> where T : class where TDb : class where TSearch : class
 {
     public EProdajaContext _context { get; set; }
-    private readonly IMapper _mapper;
+    protected readonly IMapper _mapper;
 
     public BaseReadService(EProdajaContext context, IMapper mapper)
     {
@@ -14,7 +14,7 @@ public class BaseReadService<T, TDb> : IReadService<T> where T : class where TDb
         _mapper = mapper;
     }
 
-    public virtual IEnumerable<T> Get()
+    public virtual IEnumerable<T> Get(TSearch search = null)
     {
         var entity = _context.Set<TDb>();
         var list = entity.ToList();

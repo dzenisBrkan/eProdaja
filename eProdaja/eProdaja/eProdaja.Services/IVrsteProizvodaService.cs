@@ -2,6 +2,5 @@
 
 namespace eProdaja.eProdaja.Services;
 
-public interface IVrsteProizvodaService : IReadService<VrsteProizvodum>
-{
-}
+public interface IVrsteProizvodaService : IReadService<VrsteProizvodum, object>
+{}

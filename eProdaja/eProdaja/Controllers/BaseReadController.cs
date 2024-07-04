@@ -5,18 +5,18 @@ namespace eProdaja.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BaseReadController<T> : ControllerBase where T : class
+public class BaseReadController<T, TSearch> : ControllerBase where T : class where TSearch : class
 {
-    protected readonly IReadService<T> _readService;
-    public BaseReadController(IReadService<T> readService)
+    protected readonly IReadService<T, TSearch> _readService;
+    public BaseReadController(IReadService<T, TSearch> readService)
     {
         _readService = readService;
     }
 
     [HttpGet]
-    public virtual IEnumerable<T> Index()
+    public virtual IEnumerable<T> Index([FromQuery]TSearch search)
     {
-        return _readService.Get();
+        return _readService.Get(search);
     }
 
     [HttpGet("{id}")]

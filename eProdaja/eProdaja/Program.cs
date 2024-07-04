@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -14,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IKorisnikService, KorisnikService>();
 builder.Services.AddScoped<IJedinicaMjereServices, JedinicaMjereServices>();
 builder.Services.AddScoped<IVrsteProizvodaService, VrsteProizvodaService>();
+builder.Services.AddScoped<IProizvodService, ProizvodService>();
 builder.Services.AddDbContext<EProdajaContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
