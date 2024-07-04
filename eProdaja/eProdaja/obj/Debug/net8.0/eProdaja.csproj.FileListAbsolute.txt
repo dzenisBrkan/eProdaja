@@ -138,3 +138,4 @@ C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\refint\eProdaja.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.pdb
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.genruntimeconfig.cache
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\ref\eProdaja.dll
+C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.sourcelink.json
