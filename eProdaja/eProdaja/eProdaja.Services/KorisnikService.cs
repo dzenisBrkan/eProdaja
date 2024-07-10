@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eProdaja.Database;
+using eProdaja.Model;
 using eProdaja.Model.Requests;
 
 namespace eProdaja.eProdaja.Services;
@@ -15,9 +16,23 @@ public class KorisnikService : IKorisnikService
         _mapper = mapper;
     }
 
-    public List<Model.Korisnici> Get()
+    public List<Model.Korisnici> Get(KorisniciSearchRequest request)
     {
-        return _context.Korisnicis.ToList().Select(x => _mapper.Map<Model.Korisnici>(x)).ToList();
+        var query = _context.Korisnicis.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(request?.Ime))
+        {
+            query = query.Where(x=>x.Ime.StartsWith(request.Ime));
+        }
+        if (!string.IsNullOrWhiteSpace(request?.Prezime))
+        {
+            query = query.Where(x => x.Prezime.StartsWith(request.Prezime));
+        }
+
+        var list = query.ToList();
+        return _mapper.Map<List<Model.Korisnici>>(list);
+
+        //return _context.Korisnicis.ToList().Select(x => _mapper.Map<Model.Korisnici>(x)).ToList();
     }
 
     public Model.Korisnici GetById(int id)

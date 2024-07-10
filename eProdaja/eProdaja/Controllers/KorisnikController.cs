@@ -16,9 +16,9 @@ public class KorisnikController : Controller
     }
 
     [HttpGet]
-    public IList<Korisnici> Index()
+    public IList<Korisnici> Index([FromQuery]KorisniciSearchRequest request)
     {
-        return _korisnikService.Get();
+        return _korisnikService.Get(request);
     }
 
     [HttpGet("{id}")]

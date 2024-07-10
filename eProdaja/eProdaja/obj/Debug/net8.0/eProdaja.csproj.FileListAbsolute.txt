@@ -139,3 +139,6 @@ C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.pdb
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.genruntimeconfig.cache
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\ref\eProdaja.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.sourcelink.json
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\eProdaja.Model.dll.config
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.xml
