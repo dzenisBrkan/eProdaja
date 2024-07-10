@@ -5,7 +5,7 @@ namespace eProdaja.eProdaja.Services;
 
 public interface IKorisnikService
 {
-    List<Korisnici> Get();
+    List<Korisnici> Get(KorisniciSearchRequest request);
     Korisnici GetById(int id);
     Korisnici Insert(KorisniciInsertRequest request);
 }
