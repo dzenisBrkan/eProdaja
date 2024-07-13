@@ -32,6 +32,7 @@
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.txtPretraga = new System.Windows.Forms.TextBox();
+            this.KorisnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -55,6 +56,7 @@
             this.dgvKorisnici.AllowUserToDeleteRows = false;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.KorisnikID,
             this.Ime,
             this.Prezime,
             this.Status});
@@ -63,8 +65,10 @@
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.RowHeadersWidth = 62;
+            this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKorisnici.Size = new System.Drawing.Size(744, 285);
             this.dgvKorisnici.TabIndex = 0;
+            this.dgvKorisnici.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKorisnici_MouseDoubleClick);
             // 
             // btnPrikazi
             // 
@@ -83,6 +87,16 @@
             this.txtPretraga.Name = "txtPretraga";
             this.txtPretraga.Size = new System.Drawing.Size(593, 26);
             this.txtPretraga.TabIndex = 2;
+            // 
+            // KorisnikID
+            // 
+            this.KorisnikID.DataPropertyName = "KorisnikID";
+            this.KorisnikID.HeaderText = "KorisnikID";
+            this.KorisnikID.MinimumWidth = 8;
+            this.KorisnikID.Name = "KorisnikID";
+            this.KorisnikID.ReadOnly = true;
+            this.KorisnikID.Visible = false;
+            this.KorisnikID.Width = 150;
             // 
             // Ime
             // 
@@ -134,6 +148,7 @@
         private System.Windows.Forms.DataGridView dgvKorisnici;
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.TextBox txtPretraga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;

@@ -32,4 +32,10 @@ public class KorisnikController : Controller
     {
         return _korisnikService.Insert(request);
     }
+
+    [HttpPut("{id}")]
+    public Korisnici Update(int id, [FromBody] KorisniciInsertRequest request)
+    {
+        return _korisnikService.Update(id,request);
+    }
 }

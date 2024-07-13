@@ -31,8 +31,6 @@ public class KorisnikService : IKorisnikService
 
         var list = query.ToList();
         return _mapper.Map<List<Model.Korisnici>>(list);
-
-        //return _context.Korisnicis.ToList().Select(x => _mapper.Map<Model.Korisnici>(x)).ToList();
     }
 
     public Model.Korisnici GetById(int id)
@@ -44,18 +42,36 @@ public class KorisnikService : IKorisnikService
 
     public Model.Korisnici Insert(KorisniciInsertRequest request)
     {
-        var entity = new Model.Korisnici
-        {
-            Ime = request?.Ime,
-            Prezime = request?.Prezime,
-            Email = request?.Email,
-            KorisnickoIme = request?.KorisnickoIme,
-            Status = true,
-            Telefon = request?.Telefon
-        };
-        _context.Add(entity);
-        _context.SaveChanges();
+        var entity = _mapper.Map<Database.Korisnici>(request);
 
+        if (request.Password != request.PasswordPotvrda)
+        {
+            throw new Exception("Unesite isti password");
+        }
+
+        entity.LozinkaHash = "test";
+        entity.LozinkaSalt = "test";
+
+        _context.Korisnicis.Add(entity);
+        _context.SaveChanges();
+        return _mapper.Map<Model.Korisnici>(entity);
+    }
+
+    public Model.Korisnici Update(int id, KorisniciInsertRequest request)
+    {
+        var entity = _context.Korisnicis.Find(id);
+
+        _mapper.Map(request, entity);
+
+        if (!string.IsNullOrWhiteSpace(request.Password))
+        {
+            if(request.Password != request.PasswordPotvrda)
+            {
+                throw new Exception("Passwordi se ne slazu!");
+            }
+            //TODO: update password
+        }
+        _context.SaveChanges();
         return _mapper.Map<Model.Korisnici>(entity);
     }
 }

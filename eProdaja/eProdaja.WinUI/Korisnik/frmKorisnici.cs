@@ -28,5 +28,12 @@ namespace eProdaja.WinUI.Korisnik
 
         private void btnPrikazi_DragEnter(object sender, DragEventArgs e)
         {}
+
+        private void dgvKorisnici_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var id = dgvKorisnici.SelectedRows[0].Cells[0].Value;
+            frmKorisniciDetalji frm = new frmKorisniciDetalji(int.Parse(id.ToString()));
+            frm.Show();
+        }
     }
 }

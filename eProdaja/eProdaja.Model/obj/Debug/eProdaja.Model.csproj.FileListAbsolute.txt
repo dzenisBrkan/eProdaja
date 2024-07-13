@@ -11,3 +11,4 @@ C:\RS2\eProdaja\eProdaja\eProdaja.Model\bin\Debug\Newtonsoft.Json.xml
 C:\RS2\eProdaja\eProdaja\eProdaja.Model\bin\Debug\Newtonsoft.Json.Bson.pdb
 C:\RS2\eProdaja\eProdaja\eProdaja.Model\bin\Debug\Newtonsoft.Json.Bson.xml
 C:\RS2\eProdaja\eProdaja\eProdaja.Model\obj\Debug\eProdaja.Model.csproj.CopyComplete
+C:\RS2\eProdaja\eProdaja\eProdaja.Model\bin\Debug\System.ComponentModel.Annotations.dll
