@@ -14,6 +14,7 @@ public class ProizvodService : BaseCRUDService<Model.Proizvodi, Database.Proizvo
     public override IEnumerable<Model.Proizvodi> Get(ProizvodiSearchObject search = null)
     {
         var entity = _context.Set<Database.Proizvodi>().AsQueryable();
+
         if (!string.IsNullOrWhiteSpace(search?.Naziv))
         {
             entity = entity.Where(x => x.Naziv.Contains(search.Naziv));

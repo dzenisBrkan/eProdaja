@@ -54,10 +54,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="JediniceMjere.cs" />
     <Compile Include="Korisnici.cs" />
-    <Compile Include="KorisniciSearchRequest.cs" />
+    <Compile Include="Requests\KorisniciSearchRequest.cs" />
     <Compile Include="ObjectExtension.cs" />
     <Compile Include="Proizvodi.cs" />
-    <Compile Include="ProizvodiSearchObject.cs" />
+    <Compile Include="Requests\ProizvodiSearchObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\KorisniciInsertRequest.cs" />
     <Compile Include="Requests\ProizvodiInsertRequest.cs" />

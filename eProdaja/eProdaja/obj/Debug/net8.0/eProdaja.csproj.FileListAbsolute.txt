@@ -116,7 +116,10 @@ C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\runtimes\win\lib\net6.0\Syste
 C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\eProdaja.Model.dll
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\eProdaja.Model.pdb
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\eProdaja.Model.dll.config
+C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.xml
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.csproj.AssemblyReference.cache
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.GeneratedMSBuildEditorConfig.editorconfig
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.AssemblyInfoInputs.cache
@@ -124,6 +127,7 @@ C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.AssemblyInfo.cs
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.csproj.CoreCompileInputs.cache
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.MvcApplicationPartsAssemblyInfo.cs
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.MvcApplicationPartsAssemblyInfo.cache
+C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.sourcelink.json
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\staticwebassets.build.json
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\staticwebassets.development.json
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\staticwebassets\msbuild.eProdaja.Microsoft.AspNetCore.StaticWebAssets.props
@@ -138,7 +142,3 @@ C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\refint\eProdaja.dll
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.pdb
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.genruntimeconfig.cache
 C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\ref\eProdaja.dll
-C:\RS2\eProdaja\eProdaja\eProdaja\obj\Debug\net8.0\eProdaja.sourcelink.json
-C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\eProdaja.Model.dll.config
-C:\RS2\eProdaja\eProdaja\eProdaja\bin\Debug\net8.0\Newtonsoft.Json.xml

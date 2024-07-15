@@ -1,4 +1,5 @@
 ﻿using eProdaja.WinUI.Korisnik;
+using eProdaja.WinUI.Proizvod;
 using System;
 using System.Windows.Forms;
 
@@ -109,6 +110,12 @@ namespace eProdaja.WinUI
         private void noviKorisnikToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
+            frm.Show();
+        }
+
+        private void pretragaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmProizvodi frm = new frmProizvodi();
             frm.Show();
         }
     }
