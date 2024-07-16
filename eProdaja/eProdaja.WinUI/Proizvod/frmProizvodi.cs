@@ -1,8 +1,12 @@
 ﻿using eProdaja.Model;
+using eProdaja.Model.Requests;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace eProdaja.WinUI.Proizvod
 {
@@ -58,6 +62,44 @@ namespace eProdaja.WinUI.Proizvod
             });
 
             proizvodiGrid.DataSource = resault;
+        }
+
+        ProizvodiInsertRequest request = new ProizvodiInsertRequest();
+        private async void Sacuvaj_Click(object sender, EventArgs e)
+        {
+
+            var vrstaProizvodaIdObj = cmbVrstaProizvoda.SelectedValue;
+            if (int.TryParse(vrstaProizvodaIdObj.ToString(), out int vrstaId))
+            {
+                request.VrstaId = vrstaId;
+            }
+
+            var jedinicaMjereIdObj = cmbJediniceMjere.SelectedValue;
+            if (int.TryParse(jedinicaMjereIdObj.ToString(), out int jedinicaId))
+            {
+                request.JedinicaMjereId = jedinicaId;
+            }
+
+            request.Sifra = txtSifra.Text;
+            request.Naziv = txtNaziv.Text;
+            //request.Cijena = Int32.Parse(txtCijena.Text);
+
+            await _proizvodiService.Insert<Proizvodi>(request);
+        }
+
+        private void Dodaj_Click(object sender, EventArgs e)
+        {
+            var resault = openFileDialog1.ShowDialog();
+
+            if (resault == DialogResult.OK)
+            {
+                var fileName = openFileDialog1.FileName;
+                var file = File.ReadAllBytes(fileName);
+                request.Slika = file;
+                txtSlika.Text = fileName;
+                Image image = Image.FromFile(fileName);
+                pictureBox.Image = image; 
+            }
         }
     }
 }

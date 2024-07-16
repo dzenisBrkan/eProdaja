@@ -44,6 +44,7 @@
             this.cmbVrstaProizvoda = new System.Windows.Forms.ComboBox();
             this.cmbJediniceMjere = new System.Windows.Forms.ComboBox();
             this.proizvodiGrid = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proizvodiGrid)).BeginInit();
             this.SuspendLayout();
@@ -110,6 +111,7 @@
             this.Dodaj.TabIndex = 6;
             this.Dodaj.Text = "Dodaj";
             this.Dodaj.UseVisualStyleBackColor = true;
+            this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
             // Sacuvaj
             // 
@@ -119,12 +121,14 @@
             this.Sacuvaj.TabIndex = 7;
             this.Sacuvaj.Text = "Sacuvaj";
             this.Sacuvaj.UseVisualStyleBackColor = true;
+            this.Sacuvaj.Click += new System.EventHandler(this.Sacuvaj_Click);
             // 
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(1009, 37);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(168, 182);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox.TabIndex = 8;
             this.pictureBox.TabStop = false;
             // 
@@ -182,6 +186,10 @@
             this.proizvodiGrid.Size = new System.Drawing.Size(1175, 254);
             this.proizvodiGrid.TabIndex = 0;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmProizvodi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -231,5 +239,6 @@
         private System.Windows.Forms.ComboBox cmbVrstaProizvoda;
         private System.Windows.Forms.ComboBox cmbJediniceMjere;
         private System.Windows.Forms.DataGridView proizvodiGrid;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
