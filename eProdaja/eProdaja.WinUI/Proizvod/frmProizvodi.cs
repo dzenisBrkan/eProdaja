@@ -56,11 +56,18 @@ namespace eProdaja.WinUI.Proizvod
 
         private async Task LoadProizvodi(int vrstaId)
         {
-            var resault = await _proizvodiService.Get<List<Proizvodi>>(new ProizvodiSearchObject()
+            ProizvodiSearchObject search = new ProizvodiSearchObject();
+            search.IncludeList = new string[]
             {
-                VrstaId = vrstaId
-            });
+                "JedinicaMjere",
+                "Vrsta"
+            };
 
+            if (vrstaId != 0)
+            {
+                search.VrstaId = vrstaId;
+            }
+            var resault = await _proizvodiService.Get<List<Proizvodi>>(search);
             proizvodiGrid.DataSource = resault;
         }
 

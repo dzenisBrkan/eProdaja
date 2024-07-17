@@ -109,7 +109,7 @@
             this.Dodaj.Name = "Dodaj";
             this.Dodaj.Size = new System.Drawing.Size(78, 35);
             this.Dodaj.TabIndex = 6;
-            this.Dodaj.Text = "Dodaj";
+            this.Dodaj.Text = "...";
             this.Dodaj.UseVisualStyleBackColor = true;
             this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 

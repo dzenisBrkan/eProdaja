@@ -31,13 +31,13 @@ public class ProizvodService : BaseCRUDService<Model.Proizvodi, Database.Proizvo
         {
             entity = entity.Include("JedinicaMjere");
         }
-        //if (search?.IncludeList.Length > 0)
-        //{
-        //    foreach (var item in search.IncludeList)
-        //    {
-        //        entity = entity.Include(item);
-        //    }
-        //}
+        if (search?.IncludeList?.Length > 0)
+        {
+            foreach (var item in search.IncludeList)
+            {
+                entity = entity.Include(item);
+            }
+        }
 
         var list = entity.ToList();
         return _mapper.Map<List<Model.Proizvodi>>(list);
