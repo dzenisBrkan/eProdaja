@@ -1,6 +1,8 @@
+using eProdaja.Model;
 using eProdaja.Database;
 using eProdaja.eProdaja.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,7 @@ builder.Services.AddScoped<IKorisnikService, KorisnikService>();
 builder.Services.AddScoped<IJedinicaMjereServices, JedinicaMjereServices>();
 builder.Services.AddScoped<IVrsteProizvodaService, VrsteProizvodaService>();
 builder.Services.AddScoped<IProizvodService, ProizvodService>();
+builder.Services.AddScoped<IReadService<eProdaja.Model.Uloge, object>, BaseReadService<eProdaja.Model.Uloge, eProdaja.Database.Uloge, object>>();
 builder.Services.AddDbContext<EProdajaContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));

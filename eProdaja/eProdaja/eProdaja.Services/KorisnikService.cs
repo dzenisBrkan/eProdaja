@@ -2,6 +2,8 @@
 using eProdaja.Database;
 using eProdaja.Model;
 using eProdaja.Model.Requests;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace eProdaja.eProdaja.Services;
 
@@ -43,35 +45,70 @@ public class KorisnikService : IKorisnikService
     public Model.Korisnici Insert(KorisniciInsertRequest request)
     {
         var entity = _mapper.Map<Database.Korisnici>(request);
+        _context.Korisnicis.Add(entity);
 
         if (request.Password != request.PasswordPotvrda)
         {
             throw new Exception("Unesite isti password");
         }
 
-        entity.LozinkaHash = "test";
-        entity.LozinkaSalt = "test";
+        entity.LozinkaSalt = GenerateSalt();
+        entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
 
-        _context.Korisnicis.Add(entity);
+        _context.SaveChanges();
+
+        foreach (var uloga in request.Uloge)
+        {
+            Database.KorisniciUloge korisniciUloge = new KorisniciUloge();
+            korisniciUloge.KorisnikId = entity.KorisnikId;
+            korisniciUloge.UlogaId = uloga;
+            korisniciUloge.DatumIzmjene = DateTime.Now;
+
+            _context.KorisniciUloges.Add(korisniciUloge);
+        }
+
         _context.SaveChanges();
         return _mapper.Map<Model.Korisnici>(entity);
     }
 
-    public Model.Korisnici Update(int id, KorisniciInsertRequest request)
+    public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
     {
         var entity = _context.Korisnicis.Find(id);
 
         _mapper.Map(request, entity);
 
-        if (!string.IsNullOrWhiteSpace(request.Password))
-        {
-            if(request.Password != request.PasswordPotvrda)
-            {
-                throw new Exception("Passwordi se ne slazu!");
-            }
-            //TODO: update password
-        }
+        //if (!string.IsNullOrWhiteSpace(request.Password))
+        //{
+        //    if(request.Password != request.PasswordPotvrda)
+        //    {
+        //        throw new Exception("Passwordi se ne slazu!");
+        //    }
+        //    //TODO: update password
+        //}
         _context.SaveChanges();
         return _mapper.Map<Model.Korisnici>(entity);
+    }
+
+    public static string GenerateSalt()
+    {
+        RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+        var byteArray = new byte[16];
+        provider.GetBytes(byteArray);
+
+
+        return Convert.ToBase64String(byteArray);
+    }
+    public static string GenerateHash(string salt, string password)
+    {
+        byte[] src = Convert.FromBase64String(salt);
+        byte[] bytes = Encoding.Unicode.GetBytes(password);
+        byte[] dst = new byte[src.Length + bytes.Length];
+
+        System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+        System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+
+        HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+        byte[] inArray = algorithm.ComputeHash(dst);
+        return Convert.ToBase64String(inArray);
     }
 }

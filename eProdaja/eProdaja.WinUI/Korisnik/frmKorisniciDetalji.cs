@@ -1,6 +1,10 @@
 ﻿using eProdaja.Model;
 using eProdaja.Model.Requests;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace eProdaja.WinUI.Korisnik
@@ -8,6 +12,8 @@ namespace eProdaja.WinUI.Korisnik
     public partial class frmKorisniciDetalji : Form
     {
         private readonly APIService _apiService = new APIService("Korisnik");
+        public APIService _UlogeService { get; set; } = new APIService("Uloge");
+
         private int? _id = null;
         public frmKorisniciDetalji(int? korisnikId = null)
         {
@@ -17,6 +23,9 @@ namespace eProdaja.WinUI.Korisnik
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
+            var roleList = clbUloge.CheckedItems.Cast<Uloge>().ToList();
+            var roleIdList = roleList.Select(x => x.UlogaId).ToList();
+
             if (this.ValidateChildren())
             {
                 var request = new KorisniciInsertRequest()
@@ -27,7 +36,9 @@ namespace eProdaja.WinUI.Korisnik
                     KorisnickoIme = txtKorisnickoIme.Text,
                     Telefon = txtTelefon.Text,
                     Password = txtPassword.Text,
-                    PasswordPotvrda = txtPotvrda.Text
+                    PasswordPotvrda = txtPotvrda.Text,
+                    Status = chbStatus.Checked,
+                    Uloge = roleIdList,
                 };
 
                 if (_id.HasValue)
@@ -54,7 +65,17 @@ namespace eProdaja.WinUI.Korisnik
                 txtEmail.Text = korisnik.Email;
                 txtTelefon.Text = korisnik.Telefon;
                 txtKorisnickoIme.Text = korisnik.KorisnickoIme;
+                chbStatus.Checked = korisnik.Status.GetValueOrDefault(false);
+
+                await LoadRoles();
             }
+        }
+
+        private async Task LoadRoles()
+        {
+            var roles = await _UlogeService.Get<List<Uloge>>(null);
+            clbUloge.DataSource = roles;
+            clbUloge.DisplayMember = "Naziv";
         }
 
         private void txtIme_Validating(object sender, System.ComponentModel.CancelEventArgs e)

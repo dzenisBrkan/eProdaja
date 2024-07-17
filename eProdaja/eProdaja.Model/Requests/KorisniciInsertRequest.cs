@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace eProdaja.Model.Requests
@@ -17,6 +18,9 @@ namespace eProdaja.Model.Requests
         [Required(AllowEmptyStrings = false)]
         public string KorisnickoIme { get; set; }
         public bool Status { get; set; }
+
+        public List<int> Uloge{ get; set; } = new List<int>();
+
         //[Required(AllowEmptyStrings = false)] //[Compare("PasswordPotvrda", ErrorMessage = "Passwords do not match.")]
         [MinLength(3)]
         public string Password { get; set; }

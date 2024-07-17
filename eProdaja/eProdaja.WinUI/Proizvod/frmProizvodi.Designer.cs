@@ -115,7 +115,7 @@
             // 
             // Sacuvaj
             // 
-            this.Sacuvaj.Location = new System.Drawing.Point(1055, 268);
+            this.Sacuvaj.Location = new System.Drawing.Point(1074, 277);
             this.Sacuvaj.Name = "Sacuvaj";
             this.Sacuvaj.Size = new System.Drawing.Size(122, 49);
             this.Sacuvaj.TabIndex = 7;
@@ -125,10 +125,9 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(1009, 37);
+            this.pictureBox.Location = new System.Drawing.Point(849, 43);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(168, 182);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.Size = new System.Drawing.Size(347, 219);
             this.pictureBox.TabIndex = 8;
             this.pictureBox.TabStop = false;
             // 
