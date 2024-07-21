@@ -182,8 +182,10 @@
             this.proizvodiGrid.Location = new System.Drawing.Point(30, 341);
             this.proizvodiGrid.Name = "proizvodiGrid";
             this.proizvodiGrid.RowHeadersWidth = 62;
+            this.proizvodiGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.proizvodiGrid.Size = new System.Drawing.Size(1175, 254);
             this.proizvodiGrid.TabIndex = 0;
+            this.proizvodiGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.proizvodiGrid_CellDoubleClick);
             // 
             // openFileDialog1
             // 

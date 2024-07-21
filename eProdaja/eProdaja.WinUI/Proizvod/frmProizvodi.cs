@@ -72,26 +72,41 @@ namespace eProdaja.WinUI.Proizvod
         }
 
         ProizvodiInsertRequest request = new ProizvodiInsertRequest();
+        ProizvodiUpdateRequest updateRequest = new ProizvodiUpdateRequest();
         private async void Sacuvaj_Click(object sender, EventArgs e)
         {
-
             var vrstaProizvodaIdObj = cmbVrstaProizvoda.SelectedValue;
+
             if (int.TryParse(vrstaProizvodaIdObj.ToString(), out int vrstaId))
             {
                 request.VrstaId = vrstaId;
+                updateRequest.VrstaId = vrstaId; 
             }
 
             var jedinicaMjereIdObj = cmbJediniceMjere.SelectedValue;
             if (int.TryParse(jedinicaMjereIdObj.ToString(), out int jedinicaId))
             {
                 request.JedinicaMjereId = jedinicaId;
+                updateRequest.JedinicaMjereId = jedinicaId;
             }
 
+            request.Naziv = updateRequest.Naziv = txtNaziv.Text;
             request.Sifra = txtSifra.Text;
-            request.Naziv = txtNaziv.Text;
-            //request.Cijena = Int32.Parse(txtCijena.Text);
 
-            await _proizvodiService.Insert<Proizvodi>(request);
+            if (decimal.TryParse(txtCijena.ToString(), out decimal cijena))
+            {
+                request.Cijena = updateRequest.Cijena = cijena;
+            }
+
+            if (selectedProizvodi == null)
+            {
+                await _proizvodiService.Insert<Proizvodi>(request);
+            }
+            else
+            {
+                await _proizvodiService.Update<Proizvodi>(selectedProizvodi.ProizvodId, updateRequest);
+            }
+
         }
 
         private void Dodaj_Click(object sender, EventArgs e)
@@ -107,6 +122,20 @@ namespace eProdaja.WinUI.Proizvod
                 Image image = Image.FromFile(fileName);
                 pictureBox.Image = image; 
             }
+        }
+
+        private Proizvodi selectedProizvodi = null;
+        private void proizvodiGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var item = proizvodiGrid.SelectedRows[0].DataBoundItem as Proizvodi;
+
+            selectedProizvodi = item;
+
+            //cmbVrstaProizvoda = selectedProizvodi.Vrsta;
+            txtSifra.Text = selectedProizvodi.Sifra;
+            txtNaziv.Text = selectedProizvodi.Naziv;
+            //txtCijena.Text = selectedProizvodi.Cijena;
+            //cmbJediniceMjere = selectedProizvodi.JedinicaMjere;
         }
     }
 }
