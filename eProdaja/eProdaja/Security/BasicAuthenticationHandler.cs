@@ -34,7 +34,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
             var username = credential[0];
             var password = credential[1];
 
-            user = await _korisnikService.Loging(username, password);
+            user = await _korisnikService.Login(username, password);
         }
         catch (Exception)
         {
@@ -53,10 +53,10 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
             new Claim(ClaimTypes.Name, user.Ime)
         };
 
-        //foreach (var role in user.KorisniciUloges)
-        //{
-        //    claims.Add(new Claim(ClaimTypes.Role, role.Uloga.Naziv));
-        //}
+        foreach (var role in user.KorisniciUloges)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role.Uloga.Naziv));
+        }
 
         var identity = new ClaimsIdentity(claims, Scheme.Name);
         var principal = new ClaimsPrincipal(identity);

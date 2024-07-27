@@ -44,11 +44,11 @@ namespace eProdaja.WinUI.Korisnik
                 if (_id.HasValue)
                 {
                     //kada se ide update korisnika mora se unijeti i password
-                    await _apiService.Update<Korisnici>(_id, request);
+                    await _apiService.Put<Korisnici>(_id, request);
                 }
                 else
                 {
-                    await _apiService.Insert<Korisnici>(request);
+                    await _apiService.Post<Korisnici>(request);
                 }
                 MessageBox.Show("Dodavanje korisnika uspejsno");
             }

@@ -60,7 +60,7 @@ public class KorisnikService : IKorisnikService
 
         foreach (var uloga in request.Uloge)
         {
-            Database.KorisniciUloge korisniciUloge = new KorisniciUloge();
+            Database.KorisniciUloge korisniciUloge = new Database.KorisniciUloge();
             korisniciUloge.KorisnikId = entity.KorisnikId;
             korisniciUloge.UlogaId = uloga;
             korisniciUloge.DatumIzmjene = DateTime.Now;
@@ -113,9 +113,9 @@ public class KorisnikService : IKorisnikService
         return Convert.ToBase64String(inArray);
     }
 
-    public async Task<Model.Korisnici> Loging(string username, string password)
+    public async Task<Model.Korisnici> Login(string username, string password)
     {
-        var entity = await _context.Korisnicis.FirstOrDefaultAsync(x => x.KorisnickoIme == username);
+        var entity = await _context.Korisnicis.Include("KorisniciUloges.Uloga").FirstOrDefaultAsync(x => x.KorisnickoIme == username);
 
         if (entity == null)
         {

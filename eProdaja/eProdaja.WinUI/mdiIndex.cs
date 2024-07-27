@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace eProdaja.WinUI
 {
-    public partial class frmIndex : Form
+    public partial class mdiIndex : Form
     {
         private int childFormNumber = 0;
 
-        public frmIndex()
+        public mdiIndex()
         {
             InitializeComponent();
         }

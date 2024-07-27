@@ -1,50 +1,73 @@
 ﻿using Flurl.Http;
 using System.Threading.Tasks;
 using eProdaja.Model;
+using eProdaja.WinUI.Properties;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Forms;
 
 namespace eProdaja.WinUI
 {
     public class APIService
     {
-        private string _route = null;
-        public APIService(string route)
+        private string _resource = null;
+        public string _endpoint = Settings.Default.APIUrl;
+
+        public static string Username = null;
+        public static string Password = null;
+
+        public APIService(string resource)
         {
-            _route = route;
+            _resource = resource;
         }
 
-        public async Task<T> Get<T>(object search)
+        public async Task<T> Get<T>(object search = null)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
-
-            if (search != null) 
+            var query = "";
+            if (search != null)
             {
-                url += "?";
-                url += await search.ToQueryString();
-
+                query = await search.ToQueryString();
             }
+            var list = await $"{_endpoint}{_resource}?{query}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
 
-            return await url.GetJsonAsync<T>();
+            return list;
         }
+
 
         public async Task<T> GetById<T>(object id)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
-
-            return await url.GetJsonAsync<T>();
+            var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            return result;
         }
 
-        public async Task<T> Insert<T>(object request)
+        public async Task<T> Post<T>(object request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            try
+            {
+                var result = await $"{_endpoint}{_resource}".WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+                return result;
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
-            return await url.PostJsonAsync(request).ReceiveJson<T>();
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
 
-        public async Task<T> Update<T>(object id, object request)
+        public async Task<T> Put<T>(object id, object request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
+            var result = await $"{_endpoint}{_resource}/{id}".WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
 
-            return await url.PutJsonAsync(request).ReceiveJson<T>();
+            return result;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace eProdaja.WinUI
 {
-    partial class frmIndex
+    partial class mdiIndex
     {
         /// <summary>
         /// Required designer variable.

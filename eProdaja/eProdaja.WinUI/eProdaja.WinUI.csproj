@@ -93,11 +93,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmIndex.cs">
+    <Compile Include="mdiIndex.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIndex.Designer.cs">
-      <DependentUpon>frmIndex.cs</DependentUpon>
+    <Compile Include="mdiIndex.Designer.cs">
+      <DependentUpon>mdiIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Korisnik\frmKorisnici.cs">
       <SubType>Form</SubType>
@@ -119,8 +125,11 @@
       <DependentUpon>frmProizvodi.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmIndex.resx">
-      <DependentUpon>frmIndex.cs</DependentUpon>
+    <EmbeddedResource Include="mdiIndex.resx">
+      <DependentUpon>mdiIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnik\frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>

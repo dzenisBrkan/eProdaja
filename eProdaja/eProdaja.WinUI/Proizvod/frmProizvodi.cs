@@ -100,11 +100,11 @@ namespace eProdaja.WinUI.Proizvod
 
             if (selectedProizvodi == null)
             {
-                await _proizvodiService.Insert<Proizvodi>(request);
+                await _proizvodiService.Post<Proizvodi>(request);
             }
             else
             {
-                await _proizvodiService.Update<Proizvodi>(selectedProizvodi.ProizvodId, updateRequest);
+                await _proizvodiService.Put<Proizvodi>(selectedProizvodi.ProizvodId, updateRequest);
             }
 
         }

@@ -54,6 +54,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="JediniceMjere.cs" />
     <Compile Include="Korisnici.cs" />
+    <Compile Include="KorisniciUloge.cs" />
     <Compile Include="Requests\KorisniciSearchRequest.cs" />
     <Compile Include="ObjectExtension.cs" />
     <Compile Include="Proizvodi.cs" />
