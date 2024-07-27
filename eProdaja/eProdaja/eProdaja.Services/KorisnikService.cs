@@ -2,6 +2,7 @@
 using eProdaja.Database;
 using eProdaja.Model;
 using eProdaja.Model.Requests;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -110,5 +111,24 @@ public class KorisnikService : IKorisnikService
         HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
         byte[] inArray = algorithm.ComputeHash(dst);
         return Convert.ToBase64String(inArray);
+    }
+
+    public async Task<Model.Korisnici> Loging(string username, string password)
+    {
+        var entity = await _context.Korisnicis.FirstOrDefaultAsync(x => x.KorisnickoIme == username);
+
+        if (entity == null)
+        {
+            throw new Exception("Pogresan username ili password");
+        }
+
+        var hash = GenerateHash(entity.LozinkaSalt, password);
+
+        if (hash != entity.LozinkaHash)
+        {
+            return null;
+        }
+
+        return _mapper.Map<Model.Korisnici>(entity);
     }
 }

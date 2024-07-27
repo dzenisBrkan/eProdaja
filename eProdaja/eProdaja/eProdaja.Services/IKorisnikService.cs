@@ -9,4 +9,5 @@ public interface IKorisnikService
     Korisnici GetById(int id);
     Korisnici Insert(KorisniciInsertRequest request);
     Korisnici Update(int id, KorisniciUpdateRequest request);
+    Task<Model.Korisnici> Loging(string username, string password);
 }
